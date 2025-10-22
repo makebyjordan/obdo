@@ -5,7 +5,7 @@ import { prisma } from '@/lib/db'
 // PATCH - Actualizar objetivo (toggle completed principalmente)
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth()
@@ -17,7 +17,7 @@ export async function PATCH(
       )
     }
 
-    const { id } = params
+    const { id } = await params
     const body = await req.json()
     const { completed } = body
 
@@ -104,7 +104,7 @@ export async function PATCH(
 // DELETE - Eliminar objetivo
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth()
@@ -116,7 +116,7 @@ export async function DELETE(
       )
     }
 
-    const { id } = params
+    const { id } = await params
 
     // Verificar propiedad
     const goal = await prisma.goal.findFirst({

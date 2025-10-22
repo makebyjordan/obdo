@@ -5,7 +5,7 @@ import { prisma } from '@/lib/db'
 // PATCH - Actualizar solo las notas de un objetivo
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth()
@@ -17,7 +17,7 @@ export async function PATCH(
       )
     }
 
-    const { id } = params
+    const { id } = await params
     const body = await req.json()
     const { notes } = body
 

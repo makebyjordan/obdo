@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
     })
 
     const total = goals.length
-    const completed = goals.filter(g => g.completed).length
+    const completed = goals.filter((g: { completed: boolean }) => g.completed).length
     const pending = total - completed
     const percentage = total > 0 ? (completed / total) * 100 : 0
     // Puede añadir más si tiene menos de 50 objetivos (sin restricciones)
@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
 
     // Calcular order (último + 1)
     const maxOrder = existingGoals.reduce(
-      (max, goal) => Math.max(max, goal.order),
+      (max: number, goal: { order: number }) => Math.max(max, goal.order),
       -1
     )
 
