@@ -19,7 +19,7 @@ Edita `.env` con tus valores:
 DATABASE_URL="postgresql://user:password@localhost:5432/goals_dashboard?schema=public"
 
 # NextAuth
-NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_URL="http://localhost:4000"
 NEXTAUTH_SECRET="tu-secret-key-aqui"
 
 # Google OAuth (opcional)
@@ -68,7 +68,7 @@ npx prisma studio
 4. Ve a "Credenciales" → "Crear credenciales" → "ID de cliente OAuth 2.0"
 5. Configura:
    - Tipo de aplicación: Aplicación web
-   - URIs de redirección autorizados: `http://localhost:3000/api/auth/callback/google`
+   - URIs de redirección autorizados: `http://localhost:4000/api/auth/callback/google`
 6. Copia el Client ID y Client Secret al archivo `.env`
 
 ### 6. Generar Secret para NextAuth
@@ -83,7 +83,7 @@ Copia el resultado a `NEXTAUTH_SECRET` en `.env`
 pnpm dev
 ```
 
-La aplicación estará disponible en: http://localhost:3000
+La aplicación estará disponible en: http://localhost:4000
 
 ## 🎯 Funcionalidades Principales
 
